@@ -2,7 +2,7 @@ class Game
   include Mongoid::Document
   field :game_type, type: Integer
   field :game_state, type: Integer
-  field :num_rounds, type: Integer
+  field :num_rounds, type: Integer, default: 0
   field :current_round, type: BSON::ObjectId
   embedded_in :session
   embeds_many :rounds

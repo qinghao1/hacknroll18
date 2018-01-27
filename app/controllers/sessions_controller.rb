@@ -11,6 +11,8 @@ class SessionsController < ApplicationController
   # GET /sessions/1.json
   def show
     @session = Session.where(unique_id: params[:id])
+    # New round logic here
+
   end
 
   # GET /sessions/new
@@ -28,6 +30,8 @@ class SessionsController < ApplicationController
     )
     @session.players.push(@player)
     @session.save
+
+    render status: :success
   end
 
   # POST /
@@ -47,6 +51,8 @@ class SessionsController < ApplicationController
         format.json { render json: @session.errors, status: :unprocessable_entity }
       end
     end
+
+    render status: :success
   end
 
   private

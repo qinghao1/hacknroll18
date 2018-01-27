@@ -2,6 +2,13 @@ class GamesController < ApplicationController
   # GET /game/:id
   def show
     @game = Game.find(params[:id])
+    # Round end logic
+    if @game.current_round.blank? or @game.current_round.finished
+      @game.num_rounds += 1
+      new_round = Round.new()
+      @game.rounds.push(new_round)
+      @game.current_round = new_round.id
+    end
   end
 
   # POST /game/:id
@@ -40,7 +47,7 @@ class GamesController < ApplicationController
 
     max_score = @game.session.players.length
     if @current_round.scores.length == max_score
-      @current_round.scores.sort_by{&:last}
+      @current_round.scores.sort_by{|k,v| v}
       @current_round.each do |player, score|
         score = max_score
         max_score -= 1
@@ -48,5 +55,7 @@ class GamesController < ApplicationController
       @current_round.finished = true
     end
     @current_round.save
+
+    render status: :success
   end
 end
