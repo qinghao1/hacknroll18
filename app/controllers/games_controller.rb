@@ -17,7 +17,7 @@ class GamesController < ApplicationController
         # Request parameters
         'returnFaceId' => 'false',
         'returnFaceLandmarks' => 'false',
-        'returnFaceAttributes' => '{string}',
+        'returnFaceAttributes' => 'emotion',
         'processData' => 'false'
     })
     request = Net::HTTP::Post.new(uri.request_uri)
@@ -33,19 +33,19 @@ class GamesController < ApplicationController
     end
 
     response = JSON.parse(response)
-    emotions = response.first["faceAttributes"]["emotion"]
+    emotion_score = 
+      response.first["faceAttributes"]["emotion"][@game.required_emotion]
     
-    @current_round[
+    @current_round.scores[params[:player_id]] = emotion_score
 
-
-    @current_round.semaphore -= 1
     max_score = @game.session.players.length
-    if @current_round.semaphore == 0
+    if @current_round.scores.length == max_score
       @current_round.scores.sort_by{&:last}
       @current_round.each do |player, score|
         score = max_score
         max_score -= 1
       end
+      @current_round.finished = true
     end
     @current_round.save
   end

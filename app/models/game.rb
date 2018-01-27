@@ -8,7 +8,25 @@ class Game
   embeds_many :rounds
 
   # Required emotion for current state
-  def self.required_emotion
+  def required_emotion
     # Ignore game_type for now
+    case game_state
+    when 1
+      return "anger"
+    when 2
+      return "contempt"
+    when 3
+      return "disgust"
+    when 4
+      return "fear"
+    when 5
+      return "happiness"
+    when 6
+      return "neutral"
+    when 7
+      return "sadness"
+    when 8
+      return "surprise"
+    end
   end
 end
