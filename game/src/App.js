@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {axios} from 'axios';
 
 export default class App extends Component{
-
 
   render() {
     return (
@@ -15,12 +13,7 @@ export default class App extends Component{
       <p className="App-intro"><center>
       bb don cri, is only gaem
       </center></p>
-      <p><button type="button" onClick={
-    axios.post('/user/12345', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      }
-      }><center>Create</center></button> </p>
+      <p><button type="button"><center>Create</center></button> </p>
       <p><button type="button"><center>Join</center></button> </p>
       </div>
     )}

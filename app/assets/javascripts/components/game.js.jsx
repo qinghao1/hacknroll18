@@ -9,8 +9,8 @@ var Game = createReactClass({
         <p className="App-intro"><center>
           bb don cri, is only gaem
         </center></p>
-        <p><button type="button"><center>Create</center></button> </p>
-        <p><button type="button"><center>Join</center></button> </p>
+        <p align = 'center'><button type="button">Create</button> </p>
+        <p align = 'center'><button type="button">Join</button> </p>
       </div>
   	)}
 });
