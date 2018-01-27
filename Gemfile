@@ -21,7 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'mongoid'
 
 # React
-gem "react_on_rails", "~> 6"
+gem "react_on_rails"
+gem "webpacker"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
