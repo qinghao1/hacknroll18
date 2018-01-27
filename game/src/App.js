@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import axios from 'axios';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title" >Face Off</h1>
-        </header>
-        <p className="App-intro">
-          bb don cri, is only gaem
-        </p>
-      </div>
-    );
-  }
+
+    handleClick = () => {
+        console.log("wtf");
+        axios.post('localhost:3000');
+        alert("asd");
+    }
+    
+    render() {
+        return (
+            <MuiThemeProvider>
+              <div className="App">
+                <RaisedButton onClick={this.handleClick} color="primary">
+                  your mother
+                </RaisedButton>
+              </div>
+            </MuiThemeProvider>
+        );
+    }
 }
 
 export default App;
