@@ -6,4 +6,9 @@ class Game
   field :current_round, type: BSON::ObjectId
   embedded_in :session
   embeds_many :rounds
+
+  # Required emotion for current state
+  def self.required_emotion
+    # Ignore game_type for now
+  end
 end
