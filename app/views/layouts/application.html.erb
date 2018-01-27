@@ -3,12 +3,12 @@
   <head>
     <title>Hacknroll</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_tag 'application' %>
   </head>
-
   <body>
     <%= yield %>
+    <%= react_component("HelloWorld", { greeting: "test it works" }) %>
   </body>
 </html>
