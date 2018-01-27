@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
       picture_url: params[:picture_url]
     )
     @session.players.push(@player)
+    @session.save
   end
 
   # POST /
