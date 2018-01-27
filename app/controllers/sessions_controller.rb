@@ -31,7 +31,6 @@ class SessionsController < ApplicationController
 
   # POST /
   def create
-    require 'securerandom'
     @unique_id = SecureRandom.hex(6)
     @session = Session.new(
       unique_id: @unique_id,
