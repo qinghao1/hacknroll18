@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/', to: 'sessions#index'
+  get '/:id', to: 'sessions#show'
+  post '/:id', to: 'sessions#join'
+  get '/game/:id', to: 'games#show'
+  post '/game/:id', to: 'games#submit'
 end
