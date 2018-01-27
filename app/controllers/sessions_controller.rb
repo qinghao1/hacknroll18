@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
   # GET /sessions/1
   # GET /sessions/1.json
   def show
+    @session = Session.where(unique_id: params[:id])
   end
 
   # GET /sessions/new
@@ -23,10 +24,14 @@ class SessionsController < ApplicationController
     
   end
 
-  # POST /sessions
-  # POST /sessions.json
+  # POST /
   def create
-    @session = Session.new(session_params)
+    require 'securerandom'
+    @unique_id = SecureRandom.hex(6)
+    @session = Session.new(
+      unique_id: @unique_id,
+      created_time: DateTime.now
+    )
 
     respond_to do |format|
       if @session.save
