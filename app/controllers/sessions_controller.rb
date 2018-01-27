@@ -21,7 +21,12 @@ class SessionsController < ApplicationController
   # POST /sessions/1
   # POST /sessions/1.json
   def join
-    
+    @session = Session.where(unique_id: params[:id])
+    @player = Player.new(
+      name: params[:name],
+      picture_url: params[:picture_url]
+    )
+    @session.players.push(@player)
   end
 
   # POST /

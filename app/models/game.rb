@@ -4,5 +4,6 @@ class Game
   field :game_state, type: Integer
   field :num_rounds, type: Integer
   field :current_round, type: BSON::ObjectId
+  embedded_in :session
   embeds_many :rounds
 end
